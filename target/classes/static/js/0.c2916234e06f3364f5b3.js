@@ -1,2 +1,0 @@
-webpackJsonp([0],{"72Bv":function(t,s){},LGwj:function(t,s,i){"use strict";var e={render:function(){var t=this.$createElement,s=this._self._c||t;return s("div",{staticClass:"ui-page"},[s("div",{staticClass:"ui-search ui-box"},[s("div",{staticClass:"box-header ui-search-header"},[this._v("条件查询")]),this._v(" "),this._t("search-form")],2),this._v(" "),this._t("list-box")],2)},staticRenderFns:[]};var a=i("VU/8")({name:"pageBox"},e,!1,function(t){i("72Bv")},null,null);s.a=a.exports}});
-//# sourceMappingURL=0.c2916234e06f3364f5b3.js.map

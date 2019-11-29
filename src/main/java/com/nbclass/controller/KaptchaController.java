@@ -25,47 +25,47 @@ import java.io.IOException;
 @Api(tags = "验证码接口")
 @Controller
 public class KaptchaController {
-
-    private static final Logger logger = LoggerFactory.getLogger(KaptchaController.class);
-
-    private Producer captchaProducer = null;
-
-    @Autowired
-    public void setCaptchaProducer(Producer captchaProducer) {
-        this.captchaProducer = captchaProducer;
-    }
-
-    /**
-     *
-     * 获取验证码图片
-     * Gets captcha code.
-     *
-     * @param request  the request
-     * @param response the response
-     * @return the captcha code
-     * @throws IOException the io exception
-     */
-    @RequestMapping("/verificationCode")
-    public ModelAndView getCaptchaCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
-        response.setDateHeader("Expires", 0);
-        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
-        response.addHeader("Cache-Control", "post-check=0, pre-check=0");
-        response.setHeader("Pragma", "no-cache");
-        response.setContentType("image/jpeg");
-        //生成验证码文本
-        String capText = captchaProducer.createText();
-        session.setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
-        logger.info("生成验证码文本====" + capText);
-        //利用生成的字符串构建图片
-        BufferedImage bi = captchaProducer.createImage(capText);
-        ServletOutputStream out = response.getOutputStream();
-        ImageIO.write(bi, "jpg", out);
-        try {
-            out.flush();
-        } finally {
-            out.close();
-        }
-        return null;
-    }
+//
+//    private static final Logger logger = LoggerFactory.getLogger(KaptchaController.class);
+//
+//    private Producer captchaProducer = null;
+//
+//    @Autowired
+//    public void setCaptchaProducer(Producer captchaProducer) {
+//        this.captchaProducer = captchaProducer;
+//    }
+//
+//    /**
+//     *
+//     * 获取验证码图片
+//     * Gets captcha code.
+//     *
+//     * @param request  the request
+//     * @param response the response
+//     * @return the captcha code
+//     * @throws IOException the io exception
+//     */
+//    @RequestMapping("/verificationCode")
+//    public ModelAndView getCaptchaCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        HttpSession session = request.getSession();
+//        response.setDateHeader("Expires", 0);
+//        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+//        response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+//        response.setHeader("Pragma", "no-cache");
+//        response.setContentType("image/jpeg");
+//        //生成验证码文本
+//        String capText = captchaProducer.createText();
+//        session.setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
+//        logger.info("生成验证码文本====" + capText);
+//        //利用生成的字符串构建图片
+//        BufferedImage bi = captchaProducer.createImage(capText);
+//        ServletOutputStream out = response.getOutputStream();
+//        ImageIO.write(bi, "jpg", out);
+//        try {
+//            out.flush();
+//        } finally {
+//            out.close();
+//        }
+//        return null;
+//    }
 }
